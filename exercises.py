@@ -66,7 +66,7 @@ check_letter()
 # - Use the `input()` function to capture the user's age.
 # - Use `int()` to convert the input to an integer. Ensure to handle any conversion errors gracefully.
 # - Use a conditional statement to check if the age meets the minimum voting age requirement.
-
+"""
 def check_voting_eligibility():
      while True:
          age = int(float(input('Please enter your age: ')))
@@ -79,6 +79,7 @@ def check_voting_eligibility():
     
 # Call the function
 check_voting_eligibility()
+"""
 #-----------------------------------------------------------------------------------------------------------
 # Exercise 3: Calculate Dog Years
 #
@@ -97,14 +98,22 @@ check_voting_eligibility()
 # - Use the `input()` function to capture user input.
 # - Convert the string input to an integer using `int()`.
 # - Apply conditional logic to perform the correct age calculation based on the dog's age.
-
-def calculate_dog_years():
-    pass
-    # Your control flow logic goes here
-
+"""
+def calculate_dog_years(dog_age):
+    while True:
+        dog_age = int(input('Please enter your dogs age: '))
+        if  dog_age > 0:
+            break
+    if dog_age <= 2:
+        dog_age= 2*10
+        print(f'The dogs age in dog years is {dog_age} ')
+    elif dog_age > 2:
+        dog_age= (2*10)+((dog_age-2)*7)
+        print(f'The dogs age in dog years is {dog_age} ')
+ 
 # Call the function
-calculate_dog_years()
-
+calculate_dog_years(input)
+"""
 #-----------------------------------------------------------------------------------------------------------
 # Exercise 4: Weather Advice
 #
@@ -121,14 +130,28 @@ calculate_dog_years()
 #
 # Hints:
 # - Use logical operators (`AND`, `OR`, `NOT`) in your if statements to handle multiple conditions.
-
+"""
 def weather_advice():
-    pass
-    # Your control flow logic goes here
+    accepted_answer=['yes','no']
+    while True:
+        is_cold = input('is it cold yes/no ').lower()
+        is_raining= input('is it raining yes/no ').lower()
+        if  is_cold in accepted_answer and is_raining in accepted_answer:
+            break
+    if is_cold=='yes' and is_raining=='yes':
+        print(f'Wear a waterproof coat')
+    elif is_cold=='yes' and is_raining=='no':
+        print(f'Wear a warm coat.')
+    elif is_cold=='no' and is_raining=='yes':
+        print(f'Carry an umbrella')
+    elif is_cold=='no' and is_raining=='no':
+        print(f'Wear light clothing')
+
 
 # Call the function
 weather_advice()
 
+"""
 #-----------------------------------------------------------------------------------------------------------
 # Exercise 5: What's the Season?
 #
@@ -150,7 +173,26 @@ weather_advice()
 # - Ensure to validate input formats and handle unexpected inputs gracefully.
 
 def determine_season():
-    pass
+    months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+    while True:
+        month = input('Enter the month of the year (Jan - Dec): ').capitalize()
+        day = int(input('Enter the day of the month: '))
+        if month in months and day>=0 :
+            break
+    if (month=='Mar'and day>=20) or (month=='Jun'and day<=20) or month=='Jan' or month=='Feb':
+        season='Winter'
+        print(f'{month} {day} is in {season} ')
+    elif (month=='Dec'and day>=21) or (month=='Mar'and day<=19) or month=='Apr' or month=='May':
+        season='Spring'
+        print(f'{month} {day} is in {season} ')
+    elif (month=='Jun'and day>=21) or (month=='Sep'and day<=21) or month=='Jul' or month=='Aug':
+        season='Summer'
+        print(f'{month} {day} is in {season} ')
+    elif (month=='Sep'and day>=22) or (month=='Dec'and day<=20) or month=='Oct' or month=='Nov':
+        season='Fall'
+        print(f'{month} {day} is in {season} ')
+    
+       
     # Your control flow logic goes here
 
 # Call the function
