@@ -1,3 +1,4 @@
+import random
 # Exercise 0: Example
 #
 # This is a practice exercise to help you understand how to write code "inside" a provided Python function.
@@ -9,7 +10,7 @@
 # - Inside the function, declare a variable `python_is_fun` and set it to `True`.
 # - Use a conditional statement to check if `python_is_fun` is `True`.
 # - If `python_is_fun` is `True`, print the message "Python is fun!"
-"""
+
 def print_greeting():
     # Your code goes here. Remember to indent!
     python_is_fun = True
@@ -18,7 +19,7 @@ def print_greeting():
 
 # Call the function
 print_greeting()
-"""
+
 #-----------------------------------------------------------------------------------------------------------
 # Exercise 1: Vowel or Consonant
 #
@@ -36,7 +37,7 @@ print_greeting()
 # - Use the `input()` function to capture user input.
 # - Utilize the `in` operator to check for vowels.
 # - Ensure to provide feedback for non-alphabetical or invalid entries.
-"""
+
 def check_letter():    
      vowels=['a','e','i','o','u']
      while True:
@@ -49,7 +50,7 @@ def check_letter():
          print(f"The letter {x.upper()} is a consonant.")
 
 check_letter()
-"""
+
 #-----------------------------------------------------------------------------------------------------------
 # Exercise 2: Old enough to vote?
 #
@@ -66,7 +67,7 @@ check_letter()
 # - Use the `input()` function to capture the user's age.
 # - Use `int()` to convert the input to an integer. Ensure to handle any conversion errors gracefully.
 # - Use a conditional statement to check if the age meets the minimum voting age requirement.
-"""
+
 def check_voting_eligibility():
      while True:
          age = int(float(input('Please enter your age: ')))
@@ -79,7 +80,7 @@ def check_voting_eligibility():
     
 # Call the function
 check_voting_eligibility()
-"""
+
 #-----------------------------------------------------------------------------------------------------------
 # Exercise 3: Calculate Dog Years
 #
@@ -98,7 +99,7 @@ check_voting_eligibility()
 # - Use the `input()` function to capture user input.
 # - Convert the string input to an integer using `int()`.
 # - Apply conditional logic to perform the correct age calculation based on the dog's age.
-"""
+
 def calculate_dog_years(dog_age):
     while True:
         dog_age = int(input('Please enter your dogs age: '))
@@ -113,7 +114,7 @@ def calculate_dog_years(dog_age):
  
 # Call the function
 calculate_dog_years(input)
-"""
+
 #-----------------------------------------------------------------------------------------------------------
 # Exercise 4: Weather Advice
 #
@@ -130,7 +131,7 @@ calculate_dog_years(input)
 #
 # Hints:
 # - Use logical operators (`AND`, `OR`, `NOT`) in your if statements to handle multiple conditions.
-"""
+
 def weather_advice():
     accepted_answer=['yes','no']
     while True:
@@ -151,7 +152,7 @@ def weather_advice():
 # Call the function
 weather_advice()
 
-"""
+
 #-----------------------------------------------------------------------------------------------------------
 # Exercise 5: What's the Season?
 #
@@ -218,9 +219,30 @@ determine_season()
 # - Use logical AND, OR, and NOT to check conditions and provide appropriate feedback.
 
 def guess_number():
-    pass
-    # Your control flow logic goes here
-
+    fixed_number = random.randint(1,100)
+    print(fixed_number)
+    lives=5
+    for i in range(5):
+        while True:
+            try:
+                guess= int(input(f'you have {lives} attempt to guess a number from 1-100: '))
+                if guess >=0 and guess<=100:
+                    break
+                else:
+                    print('Please enter a number between 0-100: ')
+            except ValueError:
+                print('Invalid input, Please enter a number: ')
+        if guess== fixed_number:
+            print(f'Congratulations, you guessed correctly!')
+            break
+        elif guess>fixed_number and lives>0:
+            print(f'Guess is too high')
+            lives-=1
+        elif guess<fixed_number and lives>0:
+            print(f'Guess is too Low')
+            lives-=1
+    if lives==0:
+        print(f'Sorry, you failed to guess the number in five attempts')            
 # Call the function
 guess_number()
 
